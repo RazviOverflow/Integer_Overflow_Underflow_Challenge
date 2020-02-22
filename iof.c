@@ -11,6 +11,7 @@
 // -2147483648
 // 4294968633
 // 4294967296
+// 132654
 #include<stdio.h>
 #include<unistd.h>
 #include<limits.h>
@@ -28,6 +29,7 @@ void print_separator();
 void print_level_1();
 void print_level_2();
 void print_level_3();
+void print_level_4();
 void print_flag();
 int random_number(int min, int max);
 int random_negative_number();
@@ -39,11 +41,175 @@ int main(int argc,char **argv){
 	level_1();
 	level_2();
 	level_3();
+	level_4();
 	
 	printf(":) Congratulations, you passed the challenge. Here's your flag:\n");
 	print_flag();
 					
 	return 0;
+}
+
+void level_1(){
+
+	/**  Level 1: Basics of addition + **/
+	print_level_1();
+
+	int number_1 = random_number(1, INT_MAX);
+
+	int user_number;
+
+	printf("[+] Can you obtain a negative number adding a positive integer to %d?\n[+] Please insert a possitive integer (decimal): ", number_1);
+
+	// All numbers must be specified in decimal format
+	int scanf_ret_value = scanf("%d", &user_number);
+
+	if(scanf_ret_value <= 0){
+		printf("[!] You must insert a valid number!\n");
+		exit(EXIT_FAILURE);
+	} else if(user_number < 0){
+		printf("[!] You must insert a possitive number!\n");
+		exit(EXIT_FAILURE);
+	} else if(errno == ERANGE) {
+		printf("[!] You inserted a huge number!\n     PLEASE THINK THE LOGIC BEHING THE OPERATIONS! :)\n");
+		exit(EXIT_FAILURE);
+	} else {
+		printf("[✓] Number %d is possitive.\n", user_number);
+	}
+
+	int result = number_1 + user_number;
+	printf("[....] %d + %d = %d\n", number_1, user_number, result);
+	if(result >= 0){
+		printf("[!] The result is not negative. Try again!\n");
+		exit(EXIT_FAILURE);
+	} else {
+		printf("[✓] The result is %d. How's that even possible? Well... Let's move on.\n", result);
+		print_separator();
+		sleep(1);
+	}
+}
+
+void level_2(){
+
+	/**  Level 2: Basics of subtraction - **/
+	print_level_2();
+
+	int negative_number = random_negative_number();
+	int user_negative_number;
+
+	printf("[+] Can you obtain a possitive integer subtracting a negative one from %d\n", negative_number);
+	printf("[+] Please insert a negative integer (decimal): ");
+	int scanf_ret_value = scanf("%d", &user_negative_number);
+
+	if(scanf_ret_value <= 0){
+		printf("[!] You must insert a valid number!\n");
+		exit(EXIT_FAILURE);
+	} else if(user_negative_number >= 0){
+		printf("[!] You must insert a negative number!\n");
+		exit(EXIT_FAILURE);
+	} else if(errno == ERANGE) {
+		printf("[!] You inserted a huge number!\n     PLEASE THINK THE LOGIC BEHING THE OPERATIONS! :)\n");
+		exit(EXIT_FAILURE);
+	} else {
+		printf("[✓] Number %d is negative.\n", user_negative_number);
+	}
+
+	int result = negative_number - user_negative_number;
+	printf("[....] %d + %d = %d\n", negative_number, user_negative_number, result);
+	if(result <= 0){
+		printf("[!] The result is not possitive. Try again!\n");
+		exit(EXIT_FAILURE);
+	} else {
+		printf("[✓] The result is %d, and it's possitive :)\n", result);
+		print_separator();
+		sleep(1);
+	}
+}
+
+void level_3(){
+	/** Level 3: Simple Equations **/
+
+	print_level_3();
+
+	long long int X, Y;
+
+	printf("[+] Insert X value (decimal):");
+	int scanf_ret_value = scanf("%Ld", &X);
+
+	if(scanf_ret_value <= 0){
+		printf("[!] You must insert a valid number!\n");
+		exit(EXIT_FAILURE);
+	} else if(X < 1337){
+		printf("[!] X must be bigger than 1337!\n");
+		exit(EXIT_FAILURE);
+	} else {
+		printf("[✓] X is bigger than 1337!\n");
+		printf("[+] Insert Y value (decimal):");
+		scanf("%Ld", &Y);
+		if(Y < 1337){
+			printf("[!] Y must be bigger than 1337!\n");
+			exit(EXIT_FAILURE);
+		} else {
+			int truncated_X = X;
+			int truncated_Y = Y;
+
+			if(truncated_X + truncated_Y != 1337){
+				printf("[!] X+Y doest not equal to 1337! Try again\n");
+				exit(EXIT_FAILURE);
+			} else {
+				printf("[✓] X = %d, Y= %d; X+Y = 1337\n", truncated_X, truncated_Y);
+				printf("[✓] Great, you understand how truncation works! :)\n");
+				print_separator();
+				sleep(1);
+			}
+		}
+	}
+}
+
+void level_4(){
+	/** Level 4: Alternative Solutions **/
+
+	print_level_4();
+
+	long long user_X;
+	int expected_result = 417061379;
+	int subtracted_number = 153153;
+
+	printf("[+] Insert X value (decimal): ");
+	int scanf_ret_value = scanf("%Ld", &user_X);
+
+	if(scanf_ret_value <= 0){
+		printf("[!] You must insert a valid number!\n");
+		exit(EXIT_FAILURE);
+	} else if(user_X <= 1337){
+		printf("[!] X must be bigger than %d!\n", 1337);
+		exit(EXIT_FAILURE);
+	} else {
+
+		int truncated_X  = user_X*user_X; // X² (long long user_x (64 bits) * long long user_x (64 bits) truncated into int (32 bits))
+
+		int user_result = truncated_X - subtracted_number;
+		if( user_result == expected_result){
+			printf("[✓] Good job! %Ld² is: %d (in 32 bits); then %Ld² - %d = %d\n", user_X, truncated_X, user_X, subtracted_number, expected_result);
+			printf("[✓] Great, you do have some knowledge about how integers and primitive data types behave at memory and cpu level! :)\n");
+			print_separator();
+			sleep(1);
+		} else {
+			printf("[!] %Ld² - %d = %d which =/= %d! Try again\n", user_X, subtracted_number, user_result, expected_result);
+			exit(EXIT_FAILURE);
+		}
+	}
+
+}
+
+int random_number(int min, int max){
+	struct timespec time;
+	clock_gettime(CLOCK_REALTIME, &time);
+	srand(time.tv_nsec);
+	return (rand() % (max - min + 1)) + min;
+}
+
+int random_negative_number(){
+	return random_number(0, INT_MAX) - INT_MIN;
 }
 
 
@@ -76,23 +242,12 @@ void print_header(){
 	printf("                |_   _| |_____|  >  <  \n");
 	printf("                  |_|           /_/\\_\\ \n");
 
-                                                          
+	printf("\n[!]\n[******] PLEASE KEEP IN MIND: If you fail a level you must start all over again. Save your correct answers so you can insta write them [******]\n[!]\n");                               
 
-print_separator();
-fflush(stdout);
+	print_separator();
+	fflush(stdout);
+	sleep(1);
 
-
-}
-
-int random_number(int min, int max){
-	struct timespec time;
-	clock_gettime(CLOCK_REALTIME, &time);
-	srand(time.tv_nsec);
-	return (rand() % (max - min + 1)) + min;
-}
-
-int random_negative_number(){
-	return random_number(0, INT_MAX) - INT_MIN;
 }
 
 void print_level_1(){
@@ -154,9 +309,37 @@ void print_level_3(){
 	printf("                    | |                                  \n");
 	printf("                    |_|                                  \n");
 	printf("\n");
-	printf("[+] Let's move on and learn about some simple equations.\n");
+	printf("[+] Now let us learn about some simple equations.\n");
 	printf("[+] Solve the following equation:\n");
 	printf("[+] X + Y = 1337 where X > 1337 and Y > 1337\n");
+}
+
+void print_level_4(){
+
+	
+	printf("  _                    _     ___     _____        _     _   _             \n");
+	printf(" | |                  | |   /   |_  |_   _|      (_)   | | (_)            \n");
+	printf(" | |     _____   _____| |  / /| (_)   | |_      ___ ___| |_ _ _ __   __ _ \n");
+	printf(" | |    / _ \\ \\ / / _ \\ | / /_| |     | \\ \\ /\\ / / / __| __| | '_ \\ / _` |\n");
+	printf(" | |___|  __/\\ V /  __/ | \\___  |_    | |\\ V  V /| \\__ \\ |_| | | | | (_| |\n");
+	printf(" \\_____/\\___| \\_/ \\___|_|     |_(_)   \\_/ \\_/\\_/ |_|___/\\__|_|_| |_|\\__, |\n");
+	printf("                                                                     __/ |\n");
+	printf("                                                                    |___/ \n");
+	printf("        _   _                                  _                   \n");
+	printf("       | | | |                                | |                  \n");
+	printf("       | |_| |__   ___   _ __  _   _ _ __ ___ | |__   ___ _ __ ___ \n");
+	printf("       | __| '_ \\ / _ \\ | '_ \\| | | | '_ ` _ \\| '_ \\ / _ \\ '__/ __|\n");
+	printf("       | |_| | | |  __/ | | | | |_| | | | | | | |_) |  __/ |  \\__ \\\n");
+	printf("        \\__|_| |_|\\___| |_| |_|\\__,_|_| |_| |_|_.__/ \\___|_|  |___/\n");
+	printf("\n");
+	printf("[+] For the final level, let us twist the numbers and see what can be achieved. Given the following equation: \n");
+	printf("\t x > 1337\n");
+	printf("\t x² - 153153 = 417061379\n");
+	printf("[+] What's the integer X that satisfies it?\n");
+	// x valid solution = 132654
+	//132654^2 = 17597083716
+	//17597083716 in 32 bits is 417214532; 417214532 - 153153 = 417061379
+
 }
 
 void print_separator(){
@@ -164,118 +347,5 @@ void print_separator(){
 }
 
 void print_flag(){
-	printf("CYBEX{man_Im_gonna_quit_programming_who_tf_knew_signed_primitive_data_types_are_so_delicate}\n");
-}
-
-void level_1(){
-
-	/**  Level 1: Basics of addition + **/
-	print_level_1();
-
-	int number_1 = random_number(1, INT_MAX);
-
-	int user_number;
-
-	printf("[+] Can you obtain a negative number adding a positive integer to %d?\n[+] Insert a number (decimal): ", number_1);
-
-	// All numbers must be specified in decimal format
-	int scanf_ret_value = scanf("%d", &user_number);
-
-	if(scanf_ret_value <= 0){
-		printf("[!] You must insert a valid number!.\n");
-		exit(EXIT_FAILURE);
-	} else if(user_number < 0){
-		printf("[!] You must insert a possitive number!.\n");
-		exit(EXIT_FAILURE);
-	} else if(errno == ERANGE) {
-		printf("[!] You inserted a huge number!.\n     PLEASE THINK THE LOGIC BEHING THE OPERATIONS! :)\n");
-		exit(EXIT_FAILURE);
-	} else {
-		printf("[✓] Number %d is possitive.\n", user_number);
-	}
-
-	int result = number_1 + user_number;
-	printf("[+] Result of %d + %d = %d\n", number_1, user_number, result);
-	if(result >= 0){
-		printf("[!] The result is not negative. Try again!\n");
-		exit(EXIT_FAILURE);
-	} else {
-		printf("[✓] The result is %d. How's that even possible?\n", result);
-		print_separator();
-		sleep(1);
-	}
-}
-
-void level_2(){
-
-	/**  Level 2: Basics of subtraction - **/
-	print_level_2();
-
-	int negative_number = random_negative_number();
-	int user_negative_number;
-
-	printf("[+] Can you obtain a possitive integer subtracting a negative one from %d\n", negative_number);
-	printf("[+] Please insert a negative integer: ");
-	int scanf_ret_value = scanf("%d", &user_negative_number);
-
-	if(scanf_ret_value <= 0){
-		printf("[!] You must insert a valid number!.\n");
-		exit(EXIT_FAILURE);
-	} else if(user_negative_number >= 0){
-		printf("[!] You must insert a negative number!.\n");
-		exit(EXIT_FAILURE);
-	} else if(errno == ERANGE) {
-		printf("[!] You inserted a huge number!.\n     PLEASE THINK THE LOGIC BEHING THE OPERATIONS! :)\n");
-		exit(EXIT_FAILURE);
-	} else {
-		printf("[✓] Number %d is negative.\n", user_negative_number);
-	}
-
-	int result = negative_number - user_negative_number;
-	printf("[+] Result of %d + %d = %d\n", negative_number, user_negative_number, result);
-	if(result <= 0){
-		printf("[!] The result is not possitive. Try again!\n");
-		exit(EXIT_FAILURE);
-	} else {
-		printf("[✓] The result is %d, and it's possitive :)\n", result);
-		print_separator();
-		sleep(1);
-	}
-}
-
-void level_3(){
-	/** Level 3: Simple Equations **/
-
-	print_level_3();
-
-	long long int X, Y;
-
-	printf("[+] Insert X value (decimal):");
-	scanf("%Ld", &X);
-	if(X < 1337){
-		printf("[!] X must be bigger than 1337!\n");
-		exit(EXIT_FAILURE);
-	} else {
-		printf("[✓] X is bigger than 1337!\n");
-		printf("[+] Insert Y value (decimal):");
-		scanf("%Ld", &Y);
-		if(Y < 1337){
-			printf("[!] Y must be bigger than 1337!\n");
-			exit(EXIT_FAILURE);
-		} else {
-			int truncated_X = X;
-			int truncated_Y = Y;
-
-			if(truncated_X + truncated_Y != 1337){
-				printf("[!] X+Y doest not equal to 1337! Try again\n");
-				exit(EXIT_FAILURE);
-			} else {
-				printf("[✓] X = %d, Y= %d; X+Y = 1337\n", truncated_X, truncated_Y);
-				printf("[✓] Great, you understand how truncation works! :)\n");
-				sleep(1);
-				print_separator();
-				sleep(1);
-			}
-		}
-	}
+	printf("CYBEX{man_Im_gonna_quit_programming_who_tf_knew_signed_primitive_data_types_are_so_delicate_and_truncable}\n");
 }
