@@ -24,6 +24,7 @@ void level_2();
 void level_3();
 void level_4();
 
+void print_cybex_header();
 void print_header();
 void print_separator();
 void print_level_1();
@@ -36,6 +37,7 @@ int random_negative_number();
 
 int main(int argc,char **argv){
 
+	print_cybex_header();
 	print_header();
 
 	level_1();
@@ -212,9 +214,7 @@ int random_negative_number(){
 	return random_number(0, INT_MAX) - INT_MIN;
 }
 
-
-void print_header(){
-
+void print_cybex_header(){
 	printf("   _____      _                _____ _______ ______   ___   ___ ___   ___  \n");
 	printf("  / ____|    | |              / ____|__   __|  ____| |__ \\ / _ |__ \\ / _ \\ \n");
 	printf(" | |    _   _| |__   _____  _| |       | |  | |__       ) | | | | ) | | | |\n");
@@ -223,7 +223,9 @@ void print_header(){
 	printf("  \\_____\\__, |_.__/ \\___/_/\\_\\\\_____|  |_|  |_|      |____|\\___|____|\\___/ \n");
 	printf("         __/ |                                                             \n");
 	printf("        |___/                                                              \n");
-	printf("By Razvi\n");
+}
+
+void print_header(){
 
 	printf("          _____       _                        \n");
 	printf("          \\_   \\_ __ | |_ ___  __ _  ___ _ __  \n");
@@ -241,8 +243,9 @@ void print_header(){
 	printf("                 _| |_   _____  \\ \\/ / \n");
 	printf("                |_   _| |_____|  >  <  \n");
 	printf("                  |_|           /_/\\_\\ \n");
+	printf("By Razvi\n");
 
-	printf("\n[!]\n[******] PLEASE KEEP IN MIND: If you fail a level you must start all over again. Save your correct answers so you can insta write them [******]\n[!]\n");                               
+	printf("\n[!]\n[******] PLEASE KEEP IN MIND:\n[******]\t If you fail a level you must start all over again.\n[******]\t Save your correct answers so you can insta write them.\n[!]\n");                               
 
 	print_separator();
 	fflush(stdout);
