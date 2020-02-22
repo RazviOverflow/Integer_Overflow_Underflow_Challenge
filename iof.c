@@ -350,5 +350,5 @@ void print_separator(){
 }
 
 void print_flag(){
-	printf("CYBEX{man_Im_gonna_quit_programming_who_tf_knew_signed_primitive_data_types_are_so_delicate_and_truncable}\n");
+	printf("man_Im_gonna_quit_programming_who_tf_knew_signed_primitive_data_types_are_so_delicate_and_truncable\n");
 }
