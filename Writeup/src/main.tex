@@ -63,9 +63,11 @@
 
 %%%%%%%%%%%%%%%%%%%%%%%% Additional packages %%%%%%%%%%%%%%%
 \usepackage{xcolor,soul,lipsum}
+\usepackage{booktabs}
 
 %%%%%%%%%%%%%%%%%%%%%%%% Additional commands %%%%%%%%%%%%%%
 \newcommand{\myhy}[2]{\href{#1}{\color{blue}\setulcolor{blue}\ul{#2}}} % Underlined and clickable links
+\newcommand{\code}[1]{\texttt{#1}} 
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Starts the document
@@ -104,6 +106,7 @@
 		
 	% Set the date
 	{\normalsize February the 20th 2020 \par}
+	\scriptsize{Last edited on \today}
 	
 	\pagebreak
 
@@ -117,19 +120,13 @@
 %%%%% Text body starts here!
 \mainmatter
 
-
-
 \input{contents/Introduction}
 
-\input{contents/Level1}
-
-\input{contents/Level2}
-
-\input{contents/Level3}
-
-\input{contents/Level4}
+\input{contents/Solving_the_challenge}
 
 \input{contents/Acknowledgments}
+
+%\input{contents/Appendix_A}
 
 %\chapter{Summary}\label{chapt:sum}
 %[\textit{Briefly describe the goal of the project.}]
@@ -157,9 +154,8 @@
 
 \pagebreak
 
-\nocite{*} %% DELETE THIS LATER
 % Adding a bibliography if citations are used in the report
-\bibliographystyle{plain}
+\bibliographystyle{IEEEtran}
 \bibliography{bibliography}
 % Adds reference to the Bibliography in the ToC
 \addcontentsline{toc}{chapter}{\bibname}
