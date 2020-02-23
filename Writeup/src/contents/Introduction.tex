@@ -37,11 +37,11 @@ Back in 2002, Blexim categorized these numerical errors into: 1) Integer overflo
 	\item{Arithmetic overflows. They occur when the result of an arithmetic operation is bigger than the data type of the variable it will be stored into.}
 \end{itemize}
 
-On the other hand, signedness bugs ``\textit{Signedness bugs occur when an unsigned variable is interpreted as signed, or when a signed variable is interpreted as unsigned.  This type of behaviour can happen because internally to the computer, there is no distinction between the way signed and unsigned variables are stored.}''
+On the other hand, signedness bugs ``\textit{occur when an unsigned variable is interpreted as signed, or when a signed variable is interpreted as unsigned.  This type of behaviour can happen because internally to the computer, there is no distinction between the way signed and unsigned variables are stored.}''
 
 As it was aforementioned, there is plenty of literature about integer overflows. It is a well known vulnerability/bug and, as such, there are plenty of public recommendations to deal with it. The Common Weakness Enumeration\footnote{\url{https://cwe.mitre.org/index.html}} (CWE)   defines various weaknesses that involve integer overflows or other types of numerical errors. Table \ref{table:cwe_integers} shows some of these weaknesses (there are many more in the CWE's INT category\footnote{\url{https://cwe.mitre.org/data/definitions/1158.html}}). Moreover, the weakness Integer Overflow or Wraparound (CWE-190) is placed 8th in the 2019 CWE Top 25 Most Dangerous Software Errors~\cite{Top25CWE2019} ranking.
 
-\begin{table}
+\begin{table}[!h]
 	\centering
 	\caption{CWE Weaknesses involving integer and numerical errors. (Source: CWE CATEGORY: INT)}
 	\label{table:cwe_integers}

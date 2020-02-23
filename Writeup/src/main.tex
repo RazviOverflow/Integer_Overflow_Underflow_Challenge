@@ -49,7 +49,7 @@
 \restylefloat{table}
 
 % Adds space between caption and table
-\usepackage[tableposition=top]{caption}
+\usepackage[tableposition=top, skip=3pt]{caption}
 
 % Adds hyperlinks to references and ToC
 \usepackage{hyperref}
@@ -64,6 +64,8 @@
 %%%%%%%%%%%%%%%%%%%%%%%% Additional packages %%%%%%%%%%%%%%%
 \usepackage{xcolor,soul,lipsum}
 \usepackage{booktabs}
+\usepackage{subcaption}
+\usepackage{amsmath}
 
 %%%%%%%%%%%%%%%%%%%%%%%% Additional commands %%%%%%%%%%%%%%
 \newcommand{\myhy}[2]{\href{#1}{\color{blue}\setulcolor{blue}\ul{#2}}} % Underlined and clickable links
@@ -124,7 +126,7 @@
 
 \input{contents/Solving_the_challenge}
 
-\input{contents/Acknowledgments}
+%\input{contents/Acknowledgments}
 
 %\input{contents/Appendix_A}
 
