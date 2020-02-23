@@ -60,7 +60,7 @@ void level_1(){
 
 	int user_number;
 
-	printf("[+] Can you obtain a negative number adding a positive integer to %d?\n[+] Please insert a possitive integer (decimal): ", number_1);
+	printf("[+] Can you obtain a negative number adding a positive integer to %d?\n[+] Please insert a positive integer (decimal): ", number_1);
 
 	// All numbers must be specified in decimal format
 	int scanf_ret_value = scanf("%d", &user_number);
@@ -69,13 +69,13 @@ void level_1(){
 		printf("[!] You must insert a valid number!\n");
 		exit(EXIT_FAILURE);
 	} else if(user_number < 0){
-		printf("[!] You must insert a possitive number!\n");
+		printf("[!] You must insert a positive number!\n");
 		exit(EXIT_FAILURE);
 	} else if(errno == ERANGE) {
 		printf("[!] You inserted a huge number!\n     PLEASE THINK THE LOGIC BEHING THE OPERATIONS! :)\n");
 		exit(EXIT_FAILURE);
 	} else {
-		printf("[✓] Number %d is possitive.\n", user_number);
+		printf("[✓] Number %d is positive.\n", user_number);
 	}
 
 	int result = number_1 + user_number;
@@ -98,7 +98,7 @@ void level_2(){
 	int negative_number = random_negative_number();
 	int user_negative_number;
 
-	printf("[+] Can you obtain a possitive integer subtracting a negative one from %d\n", negative_number);
+	printf("[+] Can you obtain a positive integer subtracting a negative one from %d\n", negative_number);
 	printf("[+] Please insert a negative integer (decimal): ");
 	int scanf_ret_value = scanf("%d", &user_negative_number);
 
@@ -118,10 +118,10 @@ void level_2(){
 	int result = negative_number - user_negative_number;
 	printf("[....] %d + %d = %d\n", negative_number, user_negative_number, result);
 	if(result <= 0){
-		printf("[!] The result is not possitive. Try again!\n");
+		printf("[!] The result is not positive. Try again!\n");
 		exit(EXIT_FAILURE);
 	} else {
-		printf("[✓] The result is %d, and it's possitive :)\n", result);
+		printf("[✓] The result is %d, and it's positive :)\n", result);
 		print_separator();
 		sleep(1);
 	}
@@ -270,7 +270,7 @@ printf("      \\___/|_|    \\__,_|\\__,_|\\__,_|_|\\__|_|\\___/|_| |_|        \n
 
 	printf("\n");
 	printf("[+] Turns out you're back in school, learning what sums are.\n");
-	printf("[+] There is a rumor going around about two possitive integers resulting in a negative one after adding them up.\n");
+	printf("[+] There is a rumor going around about two positive integers resulting in a negative one after adding them up.\n");
 	printf("[+] Could it be true?\n");
 }
 
@@ -290,7 +290,7 @@ void print_level_2(){
 	printf("        |___/\\__,_|_.__/ \\__|_|  \\__,_|\\___|\\__|_|\\___/|_| |_|         \n");
 	printf("\n");                                                                                                                                     
 	printf("[+] Allright! Good job :)\n");
-	printf("[+] Now, is it possible to obtain a possitive integer from subtracting two negative ones?\n");
+	printf("[+] Now, is it possible to obtain a positive integer from subtracting two negative ones?\n");
 }
 
 void print_level_3(){
