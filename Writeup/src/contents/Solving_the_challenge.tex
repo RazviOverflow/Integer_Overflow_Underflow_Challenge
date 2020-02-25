@@ -4,7 +4,7 @@ In order to solve the challenge you will only need:
 \begin{itemize}
 	\item{Understanding how integer overflows and truncation work in memory (at bit level).}
 	\item{Understanding the size of primitive data types matter and, even though \code{int}'s size may vary, on most modern compilers it is 32 bits~\cite{QuoraDataTypesSizes, NewCIntegerC99}.}
-	\item{A calculator with bit-view mode, and preferably bit-toggling capabilities, in order to help you visualize what is actually happening. Windows10's default calculator in Programmer is awesome. As a Linux alternative you can use KCalc\footnote{\url{https://kde.org/applications/utilities/org.kde.kcalc}}.}
+	\item{A calculator with bit-view mode, and preferably bit-toggling capabilities, in order to help you visualize what is actually happening. Windows10's default calculator in Programmer mode/view is awesome. As a Linux alternative you can use KCalc\footnote{\url{https://kde.org/applications/utilities/org.kde.kcalc}}.}
 \end{itemize}
 
 \begin{figure}[h]
@@ -22,8 +22,8 @@ In order to solve the challenge you will only need:
 	\makebox[\textwidth][c]{
 		\includegraphics[scale=.8]{intro_level1.png}
 	}
-	\label{fig:intro_level1}
 	\caption{Formulation of the first level.}
+	\label{fig:intro_level1}
 \end{figure}
 
 The level's description states that two positive integers could result in a negative one after adding them up. It sounds like a signedness bug resulting from an arithmetic operation, i.e., the  addition.
@@ -226,7 +226,7 @@ Now, isolating the X variable:
 	\end{aligned}
 \end{equation*}
 
-Well, this approach is incorrect. Remember we are working with integer \code{int}, so there are no decimals. While it is true that $20425.83002^2 + 153153 \approx 417061379$, it is not a valid solution. The approach that must be followed is different since, in order to solve the challenge, truncation must be taken into account.  
+Well, this approach is incorrect. Remember we are working with integers, so there are no decimals. While it is true that $20425.83002^2 + 153153 \approx 417061379$, it is not a valid solution. The approach that must be followed is different since, in order to solve the challenge, truncation must be taken into account.  
 
 What we know so far is that the program expects an integer that will be squared, subtracted $153153$ and then compared with $417061379$. That is, there must be some integer $X$ that complies with $X^2 = 417214532$. We have seen earlier that getting the square root of the number is not valid. 
 

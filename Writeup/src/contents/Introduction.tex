@@ -31,7 +31,7 @@ changed), and illegal uses of operations such as shifts (e.g.,
 shifting a value in C by at least as many positions as its
 bitwidth).}''~\cite{dietz2015understanding}.
 
-Back in 2002, Blexim categorized these numerical errors into: 1) Integer overflows and 2) Signedness bugs~\cite{Blexim2002}. According to him/her, ``\textit{an integer overflow is the result of attempting to store a value in a variable which is too small to hold it}''. Two typew of integer overflows were described:
+Back in 2002, Blexim categorized these numerical errors into: 1) Integer overflows and 2) Signedness bugs~\cite{Blexim2002}. According to him/her, ``\textit{an integer overflow is the result of attempting to store a value in a variable which is too small to hold it}''. Two types of integer overflows were described:
 \begin{itemize}
 	\item{Widthness overflows. They occur when a variable of a given size (width) like \code{int} which is typically 32 bits long, is assigned to a smaller variable like \code{short}, which is typically 16 bits long. Blexim also talks about \textit{truncation} and \textit{integer promotion/demotion} that are quite important concepts. }
 	\item{Arithmetic overflows. They occur when the result of an arithmetic operation is bigger than the data type of the variable it will be stored into.}
